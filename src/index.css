@@ -181,4 +181,38 @@
       animation: none !important;
     }
   }
+
+  /* ── P3-01 Animations ── */
+  @keyframes glowBreathe {
+    0%, 100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+  }
+
+  .animate-glow-breathe {
+    animation: glowBreathe 4s ease-in-out infinite;
+  }
+
+  @keyframes tickerScroll {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); } /* Assumes content is duplicated */
+  }
+
+  .animate-ticker {
+    animation: tickerScroll 20s linear infinite;
+  }
+
+  @keyframes rotateOrb {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .animate-orb {
+    animation: rotateOrb 15s linear infinite;
+  }
 }
