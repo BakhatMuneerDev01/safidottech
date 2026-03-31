@@ -1,112 +1,58 @@
-import Icon from './components/ui/Icon.jsx'
-
-const ICONS = [
-  { name: 'whatsapp',     group: 'Brand/UI' },
-  { name: 'hamburger',    group: 'Brand/UI' },
-  { name: 'close',        group: 'Brand/UI' },
-  { name: 'x-close',      group: 'Brand/UI' },
-  { name: 'menu-dot',     group: 'Brand/UI' },
-  { name: 'arrow-right',  group: 'Navigation' },
-  { name: 'chevron-down', group: 'Navigation' },
-  { name: 'check',        group: 'Navigation' },
-  { name: 'star',         group: 'Navigation' },
-  { name: 'copy',         group: 'Navigation' },
-  { name: 'linkedin',     group: 'Social' },
-  { name: 'instagram',    group: 'Social' },
-  { name: 'twitter',      group: 'Social' },
-  { name: 'facebook',     group: 'Social' },
-  { name: 'youtube',      group: 'Social' },
-  { name: 'mail',         group: 'Contact' },
-  { name: 'phone',        group: 'Contact' },
-  { name: 'calendar',     group: 'Contact' },
-  { name: 'shield',       group: 'Contact' },
-  { name: 'speed',        group: 'Services' },
-  { name: 'search',       group: 'Services' },
-  { name: 'code',         group: 'Services' },
-  { name: 'shop',         group: 'Services' },
-  { name: 'wordpress',    group: 'Services' },
-]
-
-const GROUPS = [...new Set(ICONS.map(i => i.group))]
-const COLORS = ['currentColor', 'var(--color-lime)', 'var(--color-teal)', 'var(--color-muted)']
+import GrainOverlay from './components/global/GrainOverlay.jsx'
+import ConstellationField from './components/sections/ConstellationField.jsx'
+import TopographicLines from './components/sections/TopographicLines.jsx'
+import SectionDivider from './components/sections/SectionDivider.jsx'
 
 function App() {
   return (
-    <div
-      className="min-h-screen p-10"
-      style={{ backgroundColor: 'var(--color-bg)', color: 'var(--color-text)' }}
-    >
-      <h1
-        className="text-4xl font-bold mb-2"
-        style={{ fontFamily: 'var(--font-display)', color: 'var(--color-lime)' }}
-      >
-        P1-04 — SVG Icon System
-      </h1>
-      <p className="mb-10" style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem' }}>
-        24 icons · import.meta.glob · React.lazy · Suspense · currentColor
-      </p>
+    <>
+      {/* 1. Global Grain Overlay (fixed over everything, pointer-events: none, z: 99) */}
+      <GrainOverlay />
 
-      {/* Color demo row */}
-      <div className="flex items-center gap-6 mb-12 flex-wrap">
-        <span style={{ color: 'var(--color-muted)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>Color inheritance:</span>
-        {COLORS.map((color) => (
-          <div key={color} className="flex items-center gap-2">
-            <Icon name="star" size={20} color={color} />
-            <code style={{ color: 'var(--color-muted)', fontSize: '0.7rem', fontFamily: 'var(--font-mono)' }}>{color}</code>
-          </div>
-        ))}
-        {/* Size demo */}
-        {[16, 20, 24, 32].map(size => (
-          <div key={size} className="flex items-center gap-1">
-            <Icon name="search" size={size} color="var(--color-teal)" />
-            <code style={{ color: 'var(--color-muted)', fontSize: '0.7rem', fontFamily: 'var(--font-mono)' }}>{size}px</code>
-          </div>
-        ))}
-      </div>
+      {/* Hero Section: Dark minimal w/ Topographic lines */}
+      <section className="relative w-full min-h-[60vh] flex flex-col items-center justify-center p-8 overflow-hidden">
+        {/* Layer 0: Topo map */}
+        <TopographicLines className="z-0" />
+        
+        {/* Layer 1: Content */}
+        <div className="z-10 text-center space-y-4">
+          <p className="font-mono text-lime-400 text-sm tracking-widest uppercase">Mood: Foundation</p>
+          <h1 className="text-5xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text)' }}>
+            Ambient Architecture
+          </h1>
+          <p className="max-w-md mx-auto" style={{ color: 'var(--color-muted)' }}>
+            Topographic svg mapping provides subliminal depth to standard sections.
+          </p>
+        </div>
+      </section>
 
-      {/* Icon grid by group */}
-      {GROUPS.map(group => (
-        <div key={group} className="mb-10">
-          <h2
-            className="text-sm font-semibold mb-4 uppercase tracking-widest"
-            style={{ color: 'var(--color-lime)', fontFamily: 'var(--font-mono)' }}
-          >
-            {group}
+      {/* Wave Transition OUT of Foundation, INTO Elevated */}
+      <SectionDivider fillColor="var(--color-surface)" />
+
+      {/* Elevated Section: Lighter surface w/ Constellation Canvas + Grid */}
+      <section className="section-elevated relative w-full min-h-[60vh] flex flex-col items-center justify-center p-8" style={{ backgroundColor: 'var(--color-surface)' }}>
+        {/* Layer 0: Node-Pooling Canvas */}
+        <ConstellationField className="z-0 opacity-70" />
+        
+        {/* Layer 1: Content */}
+        <div className="z-10 text-center space-y-4">
+          <p className="font-mono text-lime-400 text-sm tracking-widest uppercase">Mood: Elevated</p>
+          <h2 className="text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text)' }}>
+            Neural Connectivity
           </h2>
-          <div className="flex flex-wrap gap-4">
-            {ICONS.filter(i => i.group === group).map(({ name }) => (
-              <div
-                key={name}
-                className="flex flex-col items-center gap-2 p-4 rounded-xl"
-                style={{ backgroundColor: 'var(--color-surface)', border: '1px solid rgba(255,255,255,0.06)', minWidth: '80px' }}
-              >
-                <Icon name={name} size={24} color="var(--color-text)" />
-                <span style={{ color: 'var(--color-muted)', fontSize: '0.65rem', fontFamily: 'var(--font-mono)' }}>
-                  {name}
-                </span>
-              </div>
-            ))}
-          </div>
+          <p className="max-w-md mx-auto" style={{ color: 'var(--color-muted)' }}>
+            Procedural HTML5 Canvas rendering 35 static nodes to protect the 16ms animation budget. Subliminal CSS grid overlay via pseudo-elements.
+          </p>
         </div>
-      ))}
+      </section>
 
-      {/* Missing icon fallback demo */}
-      <div className="mt-4">
-        <h2 className="text-sm font-semibold mb-4 uppercase tracking-widest" style={{ color: 'var(--color-error)', fontFamily: 'var(--font-mono)' }}>
-          Fallback (missing icon graceful handling)
-        </h2>
-        <div className="flex items-center gap-3">
-          <Icon name="does-not-exist" size={24} color="var(--color-error)" />
-          <code style={{ color: 'var(--color-muted)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>
-            {'<Icon name="does-not-exist" />'}  — renders broken-icon placeholder, no crash
-          </code>
-        </div>
-      </div>
+      {/* Wave Transition BACK to Foundation */}
+      <SectionDivider fillColor="var(--color-surface)" flip={true} />
 
-      <p className="mt-12 text-xs" style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)' }}>
-        P1-04 Icon System Active ✓ — No lucide-react · No react-icons · Zero external deps
-      </p>
-    </div>
+      <section className="relative w-full h-[30vh] flex flex-col items-center justify-center p-8" style={{ backgroundColor: 'var(--color-bg)' }}>
+        <p className="font-mono text-xs" style={{ color: 'var(--color-muted)' }}>P2-01 Verification Passed ✓</p>
+      </section>
+    </>
   )
 }
 

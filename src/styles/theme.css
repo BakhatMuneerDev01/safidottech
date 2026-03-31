@@ -46,3 +46,32 @@
   --section-pad-x: 5vw;    /* Fluid horizontal gutters */
   --card-pad:      32px;   /* Internal card padding */
 }
+
+/* ============================================================
+   MOODS: ELEVATED GRID OVERLAY
+   P2-01: High-performance CSS grid pattern via linear-gradients.
+   Creates the signature 60x60 technical blueprint signal.
+============================================================ */
+.section-elevated {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.section-elevated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  
+  /* 60px x 60px grid using transparent-to-lime stops */
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(170, 255, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(170, 255, 0, 0.015) 1px, transparent 1px);
+    
+  /* Mask fading edges so grid doesn't abruptly end */
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
