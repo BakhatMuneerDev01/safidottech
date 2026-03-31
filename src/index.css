@@ -212,7 +212,17 @@
     100% { transform: rotate(360deg); }
   }
 
-  .animate-orb {
-    animation: rotateOrb 15s linear infinite;
+  /* ── P3-02 Animations ── */
+  @keyframes cardShimmer {
+    0% { background-position: -200% -200%; }
+    100% { background-position: 200% 200%; }
+  }
+
+  .animate-card-shimmer {
+    animation: cardShimmer 5s linear infinite;
+  }
+
+  .animate-card-shimmer-fast {
+    animation: cardShimmer 3s linear infinite;
   }
 }
