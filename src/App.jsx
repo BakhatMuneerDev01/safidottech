@@ -3,12 +3,18 @@ import ConstellationField from './components/sections/ConstellationField.jsx'
 import TopographicLines from './components/sections/TopographicLines.jsx'
 import SectionDivider from './components/sections/SectionDivider.jsx'
 import Navbar from './components/global/Navbar.jsx'
+import WhatsAppButton from './components/global/WhatsAppButton.jsx'
+import CursorParticles from './components/global/CursorParticles.jsx'
+import ReadingProgressBar from './components/ui/ReadingProgressBar.jsx'
 
 function App() {
   return (
     <>
+      <ReadingProgressBar />
+      <CursorParticles />
+      <WhatsAppButton />
       <Navbar />
-      
+
       {/* 1. Global Grain Overlay (fixed over everything, pointer-events: none, z: 99) */}
       <GrainOverlay />
 
@@ -16,7 +22,7 @@ function App() {
       <section className="relative w-full min-h-[60vh] flex flex-col items-center justify-center p-8 overflow-hidden">
         {/* Layer 0: Topo map */}
         <TopographicLines className="z-0" />
-        
+
         {/* Layer 1: Content */}
         <div className="z-10 text-center space-y-4">
           <p className="font-mono text-lime-400 text-sm tracking-widest uppercase">Mood: Foundation</p>
@@ -36,7 +42,7 @@ function App() {
       <section className="section-elevated relative w-full min-h-[60vh] flex flex-col items-center justify-center p-8" style={{ backgroundColor: 'var(--color-surface)' }}>
         {/* Layer 0: Node-Pooling Canvas */}
         <ConstellationField className="z-0 opacity-70" />
-        
+
         {/* Layer 1: Content */}
         <div className="z-10 text-center space-y-4">
           <p className="font-mono text-lime-400 text-sm tracking-widest uppercase">Mood: Elevated</p>

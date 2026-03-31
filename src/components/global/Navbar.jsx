@@ -44,21 +44,21 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
-    
+
     // Add passive listener for extreme scroll performance
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 w-full z-[100] glass-nav ${isScrolled ? 'is-scrolled' : ''}`}
     >
-      <div 
+      <div
         className="w-full flex items-center justify-between px-[var(--section-pad-x)] transition-all duration-300
                    h-[60px] sm:h-[64px] min-[1025px]:h-[72px]"
       >
-        
+
         {/* ==================== LEFT: LOGO ==================== */}
         <div className="flex-shrink-0 flex items-center h-full">
           <Link to="/" className="text-2xl font-bold tracking-tighter" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text)' }}>
@@ -76,8 +76,8 @@ export function Navbar() {
         </div>
 
         <div className="hidden min-[1025px]:flex items-center justify-end flex-shrink-0">
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             className="group relative px-6 py-2.5 bg-transparent border border-[var(--color-lime)] text-[var(--color-lime)] rounded overflow-hidden font-medium text-sm transition-colors hover:text-black"
           >
             <span className="relative z-10 font-mono tracking-widest uppercase text-xs">Book a Call</span>
@@ -89,8 +89,8 @@ export function Navbar() {
         {/* ==================== TABLET/MOBILE LAYOUT (<= 1024px) ==================== */}
         <div className="flex min-[1025px]:hidden items-center justify-end gap-3 md:gap-4 flex-shrink-0">
           <ChatPill />
-          
-          <button 
+
+          <button
             type="button"
             className="flex items-center justify-center min-w-[44px] min-h-[44px] rounded hover:bg-[rgba(255,255,255,0.05)] transition-colors text-[var(--color-text)]"
             aria-label="Open Navigation Menu"
