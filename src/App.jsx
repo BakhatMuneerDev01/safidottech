@@ -1,62 +1,110 @@
+import Icon from './components/ui/Icon.jsx'
+
+const ICONS = [
+  { name: 'whatsapp',     group: 'Brand/UI' },
+  { name: 'hamburger',    group: 'Brand/UI' },
+  { name: 'close',        group: 'Brand/UI' },
+  { name: 'x-close',      group: 'Brand/UI' },
+  { name: 'menu-dot',     group: 'Brand/UI' },
+  { name: 'arrow-right',  group: 'Navigation' },
+  { name: 'chevron-down', group: 'Navigation' },
+  { name: 'check',        group: 'Navigation' },
+  { name: 'star',         group: 'Navigation' },
+  { name: 'copy',         group: 'Navigation' },
+  { name: 'linkedin',     group: 'Social' },
+  { name: 'instagram',    group: 'Social' },
+  { name: 'twitter',      group: 'Social' },
+  { name: 'facebook',     group: 'Social' },
+  { name: 'youtube',      group: 'Social' },
+  { name: 'mail',         group: 'Contact' },
+  { name: 'phone',        group: 'Contact' },
+  { name: 'calendar',     group: 'Contact' },
+  { name: 'shield',       group: 'Contact' },
+  { name: 'speed',        group: 'Services' },
+  { name: 'search',       group: 'Services' },
+  { name: 'code',         group: 'Services' },
+  { name: 'shop',         group: 'Services' },
+  { name: 'wordpress',    group: 'Services' },
+]
+
+const GROUPS = [...new Set(ICONS.map(i => i.group))]
+const COLORS = ['currentColor', 'var(--color-lime)', 'var(--color-teal)', 'var(--color-muted)']
+
 function App() {
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center gap-10 px-6"
-      style={{ backgroundColor: 'var(--color-bg)' }}
+      className="min-h-screen p-10"
+      style={{ backgroundColor: 'var(--color-bg)', color: 'var(--color-text)' }}
     >
-      {/* Clash Display — display font */}
-      <div className="text-center space-y-2">
-        <p style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>
-          var(--font-display) — Clash Display
-        </p>
-        <h1 style={{ color: 'var(--color-lime)', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '3rem', lineHeight: 1.1 }}>
-          Electric Forest Pro
-        </h1>
-        <h2 style={{ color: 'var(--color-text)', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '2rem', lineHeight: 1.1 }}>
-          Premium Digital Solutions
+      <h1
+        className="text-4xl font-bold mb-2"
+        style={{ fontFamily: 'var(--font-display)', color: 'var(--color-lime)' }}
+      >
+        P1-04 — SVG Icon System
+      </h1>
+      <p className="mb-10" style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem' }}>
+        24 icons · import.meta.glob · React.lazy · Suspense · currentColor
+      </p>
+
+      {/* Color demo row */}
+      <div className="flex items-center gap-6 mb-12 flex-wrap">
+        <span style={{ color: 'var(--color-muted)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>Color inheritance:</span>
+        {COLORS.map((color) => (
+          <div key={color} className="flex items-center gap-2">
+            <Icon name="star" size={20} color={color} />
+            <code style={{ color: 'var(--color-muted)', fontSize: '0.7rem', fontFamily: 'var(--font-mono)' }}>{color}</code>
+          </div>
+        ))}
+        {/* Size demo */}
+        {[16, 20, 24, 32].map(size => (
+          <div key={size} className="flex items-center gap-1">
+            <Icon name="search" size={size} color="var(--color-teal)" />
+            <code style={{ color: 'var(--color-muted)', fontSize: '0.7rem', fontFamily: 'var(--font-mono)' }}>{size}px</code>
+          </div>
+        ))}
+      </div>
+
+      {/* Icon grid by group */}
+      {GROUPS.map(group => (
+        <div key={group} className="mb-10">
+          <h2
+            className="text-sm font-semibold mb-4 uppercase tracking-widest"
+            style={{ color: 'var(--color-lime)', fontFamily: 'var(--font-mono)' }}
+          >
+            {group}
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            {ICONS.filter(i => i.group === group).map(({ name }) => (
+              <div
+                key={name}
+                className="flex flex-col items-center gap-2 p-4 rounded-xl"
+                style={{ backgroundColor: 'var(--color-surface)', border: '1px solid rgba(255,255,255,0.06)', minWidth: '80px' }}
+              >
+                <Icon name={name} size={24} color="var(--color-text)" />
+                <span style={{ color: 'var(--color-muted)', fontSize: '0.65rem', fontFamily: 'var(--font-mono)' }}>
+                  {name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      {/* Missing icon fallback demo */}
+      <div className="mt-4">
+        <h2 className="text-sm font-semibold mb-4 uppercase tracking-widest" style={{ color: 'var(--color-error)', fontFamily: 'var(--font-mono)' }}>
+          Fallback (missing icon graceful handling)
         </h2>
-        <h3 style={{ color: 'var(--color-teal)', fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: '1.5rem', lineHeight: 1.1 }}>
-          Section Heading Medium
-        </h3>
+        <div className="flex items-center gap-3">
+          <Icon name="does-not-exist" size={24} color="var(--color-error)" />
+          <code style={{ color: 'var(--color-muted)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>
+            {'<Icon name="does-not-exist" />'}  — renders broken-icon placeholder, no crash
+          </code>
+        </div>
       </div>
 
-      {/* Satoshi — body font */}
-      <div className="max-w-xl text-center space-y-2">
-        <p style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>
-          var(--font-body) — Satoshi
-        </p>
-        <p style={{ color: 'var(--color-text)', fontFamily: 'var(--font-body)', fontWeight: 400, fontSize: '1rem', lineHeight: 1.6 }}>
-          Regular 400 — The quick brown fox jumps over the lazy dog. Smooth rendering with antialiasing active.
-        </p>
-        <p style={{ color: 'var(--color-text)', fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '1rem', lineHeight: 1.6 }}>
-          Medium 500 — Every @font-face declaration uses font-display: swap for zero FOIT.
-        </p>
-        <p style={{ color: 'var(--color-text)', fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '1rem', lineHeight: 1.6 }}>
-          Bold 700 — Self-hosted WOFF2 from public/fonts/ — no CDN calls.
-        </p>
-      </div>
-
-      {/* JetBrains Mono */}
-      <div className="text-center space-y-2">
-        <p style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>
-          var(--font-mono) — JetBrains Mono
-        </p>
-        <code style={{
-          color: 'var(--color-lime)',
-          fontFamily: 'var(--font-mono)',
-          fontWeight: 400,
-          fontSize: '0.9rem',
-          backgroundColor: 'var(--color-surface)',
-          padding: '8px 16px',
-          borderRadius: '6px',
-          display: 'block'
-        }}>
-          @font-face &#123; font-display: swap; &#125;
-        </code>
-      </div>
-
-      <p style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.7rem' }}>
-        P1-03 Font System Active ✓ — Place WOFF2 files in /public/fonts/ to activate
+      <p className="mt-12 text-xs" style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)' }}>
+        P1-04 Icon System Active ✓ — No lucide-react · No react-icons · Zero external deps
       </p>
     </div>
   )

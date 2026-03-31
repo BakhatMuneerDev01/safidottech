@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import svgr from 'vite-plugin-svgr'
 import Sitemap from 'vite-plugin-sitemap'
 import { fileURLToPath, URL } from 'node:url'
 
@@ -8,6 +9,20 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    svgr({
+      // Enables importing SVGs as React components via the ?react suffix
+      // e.g. import WhatsApp from './whatsapp.svg?react'
+      svgrOptions: {
+        // Preserve viewBox, remove hardcoded dimensions
+        svgo: true,
+        svgoConfig: {
+          plugins: [
+            { name: 'removeViewBox', active: false },  // keep viewBox
+            { name: 'removeDimensions', active: true }, // strip width/height attrs
+          ]
+        }
+      }
+    }),
     Sitemap({ hostname: 'https://safidottech.com' })
   ],
   resolve: {
