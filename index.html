@@ -9,75 +9,33 @@
     <!--
       FONT PRELOAD STRATEGY
       ─────────────────────
-      Priority order:
-        1. Clash Display Medium (500) — used in h1 above the fold
-        2. Satoshi Regular (400)      — used in body text immediately
-        3. Clash Display Bold (700)   — used in CTAs & hero
-      Secondary weights load after critical path is clear.
+      Fetches font files before CSS is parsed, eliminating
+      any render-blocking delay on first paint.
 
-      Attributes required for correct behaviour:
-        rel="preload"     → fetch before CSS is parsed
-        as="font"         → correct resource hint priority
-        type="font/woff2" → browser validates WOFF2 support
-        crossorigin       → required even for same-origin fonts
+      Priority order (above-the-fold first):
+        1. ClashDisplay-Medium   → h1 / hero heading
+        2. Satoshi-Regular       → body copy
+        3. ClashDisplay-Bold     → CTAs, hero
+        4. Remaining weights     → secondary load
+
+      type="font/otf" is the correct MIME type for OpenType files.
+      crossorigin is required even for same-origin font fetches.
     -->
 
-    <!-- Clash Display: Primary display face (critical weights first) -->
-    <link
-      rel="preload"
-      href="/fonts/ClashDisplay-Medium.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/ClashDisplay-Bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/ClashDisplay-Semibold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <!-- Clash Display (critical weights first) -->
+    <link rel="preload" href="/fonts/ClashDisplay-Medium.otf"   as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/ClashDisplay-Bold.otf"     as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/ClashDisplay-Semibold.otf" as="font" type="font/otf" crossorigin />
 
-    <!-- Satoshi: Body face (regular weight is critical path) -->
-    <link
-      rel="preload"
-      href="/fonts/Satoshi-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/Satoshi-Medium.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/Satoshi-Bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <!-- Satoshi (body text — critical path) -->
+    <link rel="preload" href="/fonts/Satoshi-Regular.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/Satoshi-Medium.otf"  as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/Satoshi-Bold.otf"    as="font" type="font/otf" crossorigin />
 
-    <!-- JetBrains Mono: Non-critical — preload only -->
-    <link
-      rel="preload"
-      href="/fonts/JetBrainsMono-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <!-- JetBrains Mono (non-critical — preload only) -->
+    <link rel="preload" href="/fonts/JetBrainsMono-Regular.otf" as="font" type="font/otf" crossorigin />
 
-    <!-- Favicon placeholder (replace with actual .ico / .svg in P1-05) -->
+    <!-- Favicon placeholder -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>

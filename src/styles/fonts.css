@@ -1,24 +1,27 @@
 /* ============================================================
-   FONTS.CSS — Self-hosted WOFF2 Typography
+   FONTS.CSS — Self-hosted OTF Typography
    SAFI DOT TECH — P1-03
 
-   All files live in /public/fonts/ to ensure stable (non-hashed)
-   URLs that match the <link rel="preload"> tags in index.html.
+   Files live in /public/fonts/ for stable (non-hashed) URLs.
+   Format: OpenType (.otf) — sourced directly from Fontshare.
 
-   font-display: swap  → text renders immediately in fallback font,
-                          swaps to brand font when downloaded.
-                          Eliminates invisible-text flash (FOIT).
+   NOTE: If you later obtain WOFF2 versions (smaller, faster),
+   update src to .woff2 and format("woff2") — no other changes needed.
+
+   font-display: swap → text renders in fallback immediately,
+                         swaps to brand font once parsed.
+                         Eliminates FOIT (invisible text flash).
 ============================================================ */
 
 
 /* ------------------------------------------------------------
    CLASH DISPLAY — Display / Heading Typeface
    Source: fontshare.com/fonts/clash-display
-   Usage: --font-display, all h1–h6
+   Usage: var(--font-display), all h1–h6
 ------------------------------------------------------------ */
 @font-face {
   font-family: "Clash Display";
-  src: url("/fonts/ClashDisplay-Medium.woff2") format("woff2");
+  src: url("/fonts/ClashDisplay-Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -26,7 +29,7 @@
 
 @font-face {
   font-family: "Clash Display";
-  src: url("/fonts/ClashDisplay-Semibold.woff2") format("woff2");
+  src: url("/fonts/ClashDisplay-Semibold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -34,7 +37,7 @@
 
 @font-face {
   font-family: "Clash Display";
-  src: url("/fonts/ClashDisplay-Bold.woff2") format("woff2");
+  src: url("/fonts/ClashDisplay-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -44,11 +47,11 @@
 /* ------------------------------------------------------------
    SATOSHI — Body / UI Typeface
    Source: fontshare.com/fonts/satoshi
-   Usage: --font-body, body text, UI elements
+   Usage: var(--font-body), body text, UI elements
 ------------------------------------------------------------ */
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/Satoshi-Regular.woff2") format("woff2");
+  src: url("/fonts/Satoshi-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -56,7 +59,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/Satoshi-Medium.woff2") format("woff2");
+  src: url("/fonts/Satoshi-Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -64,7 +67,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/Satoshi-Bold.woff2") format("woff2");
+  src: url("/fonts/Satoshi-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -73,12 +76,12 @@
 
 /* ------------------------------------------------------------
    JETBRAINS MONO — Monospace / Code Typeface
-   Source: jetbrains.com/lp/mono
-   Usage: --font-mono, code blocks, technical labels
+   Source: jetbrains.com/lp/mono (also has OTF in their zip)
+   Usage: var(--font-mono), code blocks, technical labels
 ------------------------------------------------------------ */
 @font-face {
   font-family: "JetBrains Mono";
-  src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  src: url("/fonts/JetBrainsMono-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
