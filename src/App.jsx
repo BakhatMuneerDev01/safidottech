@@ -2,10 +2,13 @@ import GrainOverlay from './components/global/GrainOverlay.jsx'
 import ConstellationField from './components/sections/ConstellationField.jsx'
 import TopographicLines from './components/sections/TopographicLines.jsx'
 import SectionDivider from './components/sections/SectionDivider.jsx'
+import Navbar from './components/global/Navbar.jsx'
 
 function App() {
   return (
     <>
+      <Navbar />
+      
       {/* 1. Global Grain Overlay (fixed over everything, pointer-events: none, z: 99) */}
       <GrainOverlay />
 
