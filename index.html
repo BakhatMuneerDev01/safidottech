@@ -3,7 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAFI DOT TECH</title>
+    <title>SAFI DOT TECH — Premium Digital Solutions</title>
+    <meta name="description" content="SAFI DOT TECH — Premium digital products and development services." />
+
+    <!--
+      FONT PRELOAD STRATEGY
+      ─────────────────────
+      Priority order:
+        1. Clash Display Medium (500) — used in h1 above the fold
+        2. Satoshi Regular (400)      — used in body text immediately
+        3. Clash Display Bold (700)   — used in CTAs & hero
+      Secondary weights load after critical path is clear.
+
+      Attributes required for correct behaviour:
+        rel="preload"     → fetch before CSS is parsed
+        as="font"         → correct resource hint priority
+        type="font/woff2" → browser validates WOFF2 support
+        crossorigin       → required even for same-origin fonts
+    -->
+
+    <!-- Clash Display: Primary display face (critical weights first) -->
+    <link
+      rel="preload"
+      href="/fonts/ClashDisplay-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/ClashDisplay-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/ClashDisplay-Semibold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Satoshi: Body face (regular weight is critical path) -->
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- JetBrains Mono: Non-critical — preload only -->
+    <link
+      rel="preload"
+      href="/fonts/JetBrainsMono-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Favicon placeholder (replace with actual .ico / .svg in P1-05) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
     <div id="root"></div>

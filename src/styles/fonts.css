@@ -1,0 +1,85 @@
+/* ============================================================
+   FONTS.CSS — Self-hosted WOFF2 Typography
+   SAFI DOT TECH — P1-03
+
+   All files live in /public/fonts/ to ensure stable (non-hashed)
+   URLs that match the <link rel="preload"> tags in index.html.
+
+   font-display: swap  → text renders immediately in fallback font,
+                          swaps to brand font when downloaded.
+                          Eliminates invisible-text flash (FOIT).
+============================================================ */
+
+
+/* ------------------------------------------------------------
+   CLASH DISPLAY — Display / Heading Typeface
+   Source: fontshare.com/fonts/clash-display
+   Usage: --font-display, all h1–h6
+------------------------------------------------------------ */
+@font-face {
+  font-family: "Clash Display";
+  src: url("/fonts/ClashDisplay-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("/fonts/ClashDisplay-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("/fonts/ClashDisplay-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ------------------------------------------------------------
+   SATOSHI — Body / UI Typeface
+   Source: fontshare.com/fonts/satoshi
+   Usage: --font-body, body text, UI elements
+------------------------------------------------------------ */
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ------------------------------------------------------------
+   JETBRAINS MONO — Monospace / Code Typeface
+   Source: jetbrains.com/lp/mono
+   Usage: --font-mono, code blocks, technical labels
+------------------------------------------------------------ */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

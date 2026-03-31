@@ -1,73 +1,62 @@
 function App() {
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center gap-8"
-      style={{ backgroundColor: 'var(--color-bg)', fontFamily: 'var(--font-body)' }}
+      className="min-h-screen flex flex-col items-center justify-center gap-10 px-6"
+      style={{ backgroundColor: 'var(--color-bg)' }}
     >
-      {/* Token verification panel */}
-      <h1
-        className="text-4xl font-bold tracking-tight animate-glow-breathe"
-        style={{ color: 'var(--color-lime)', fontFamily: 'var(--font-display)' }}
-      >
-        SAFI DOT TECH
-      </h1>
-
-      {/* Colour swatches */}
-      <div className="flex gap-3 flex-wrap justify-center">
-        {[
-          ['bg', '#060A06'],
-          ['surface', '#0E130E'],
-          ['surface-2', '#161C16'],
-          ['lime', '#AAFF00'],
-          ['teal', '#00FFB2'],
-          ['whatsapp', '#25D366'],
-          ['muted', '#6B7F6B'],
-        ].map(([label, hex]) => (
-          <div key={label} className="flex flex-col items-center gap-1">
-            <div
-              className="w-12 h-12 rounded-lg border border-white/10"
-              style={{ backgroundColor: hex }}
-            />
-            <span
-              className="text-xs"
-              style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)' }}
-            >
-              {label}
-            </span>
-          </div>
-        ))}
+      {/* Clash Display — display font */}
+      <div className="text-center space-y-2">
+        <p style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>
+          var(--font-display) — Clash Display
+        </p>
+        <h1 style={{ color: 'var(--color-lime)', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '3rem', lineHeight: 1.1 }}>
+          Electric Forest Pro
+        </h1>
+        <h2 style={{ color: 'var(--color-text)', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '2rem', lineHeight: 1.1 }}>
+          Premium Digital Solutions
+        </h2>
+        <h3 style={{ color: 'var(--color-teal)', fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: '1.5rem', lineHeight: 1.1 }}>
+          Section Heading Medium
+        </h3>
       </div>
 
-      {/* Shimmer card */}
-      <div
-        className="relative w-72 h-24 rounded-xl overflow-hidden"
-        style={{ backgroundColor: 'var(--color-surface)', padding: 'var(--card-pad)' }}
-      >
-        <div className="animate-card-shimmer absolute inset-0" />
-        <p className="relative z-10 text-sm" style={{ color: 'var(--color-text)' }}>
-          Card Shimmer Active ✓
+      {/* Satoshi — body font */}
+      <div className="max-w-xl text-center space-y-2">
+        <p style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>
+          var(--font-body) — Satoshi
+        </p>
+        <p style={{ color: 'var(--color-text)', fontFamily: 'var(--font-body)', fontWeight: 400, fontSize: '1rem', lineHeight: 1.6 }}>
+          Regular 400 — The quick brown fox jumps over the lazy dog. Smooth rendering with antialiasing active.
+        </p>
+        <p style={{ color: 'var(--color-text)', fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '1rem', lineHeight: 1.6 }}>
+          Medium 500 — Every @font-face declaration uses font-display: swap for zero FOIT.
+        </p>
+        <p style={{ color: 'var(--color-text)', fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '1rem', lineHeight: 1.6 }}>
+          Bold 700 — Self-hosted WOFF2 from public/fonts/ — no CDN calls.
         </p>
       </div>
 
-      {/* Skeleton */}
-      <div className="animate-skeleton w-72 h-6 rounded-md" />
-
-      {/* Pulse ring demo */}
-      <div className="relative w-12 h-12 flex items-center justify-center">
-        <div
-          className="animate-pulse-ring absolute inset-0 rounded-full"
-          style={{ backgroundColor: 'var(--color-whatsapp)' }}
-        />
-        <div
-          className="relative z-10 w-full h-full rounded-full flex items-center justify-center text-white font-bold text-xs"
-          style={{ backgroundColor: 'var(--color-whatsapp)' }}
-        >
-          WA
-        </div>
+      {/* JetBrains Mono */}
+      <div className="text-center space-y-2">
+        <p style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>
+          var(--font-mono) — JetBrains Mono
+        </p>
+        <code style={{
+          color: 'var(--color-lime)',
+          fontFamily: 'var(--font-mono)',
+          fontWeight: 400,
+          fontSize: '0.9rem',
+          backgroundColor: 'var(--color-surface)',
+          padding: '8px 16px',
+          borderRadius: '6px',
+          display: 'block'
+        }}>
+          @font-face &#123; font-display: swap; &#125;
+        </code>
       </div>
 
-      <p className="text-xs" style={{ color: 'var(--color-muted)' }}>
-        P1-02 Design Tokens Active ✓
+      <p style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.7rem' }}>
+        P1-03 Font System Active ✓ — Place WOFF2 files in /public/fonts/ to activate
       </p>
     </div>
   )

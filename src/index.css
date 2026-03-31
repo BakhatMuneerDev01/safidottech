@@ -1,18 +1,20 @@
 /* ============================================================
    ROOT CSS ENTRY — SAFI DOT TECH
    Import order matters:
-   1. Tailwind engine
-   2. Theme tokens (@theme block must precede utilities)
-   3. Keyframe animations
-   4. Cursor particle effects
+   1. Fonts (@font-face must be parsed before Tailwind utilities)
+   2. Tailwind engine
+   3. Theme tokens (@theme block)
+   4. Keyframe animations
+   5. Cursor particle effects
 ============================================================ */
+@import "./styles/fonts.css";
 @import "tailwindcss";
 @import "./styles/theme.css";
 @import "./styles/keyframes.css";
 @import "./styles/cursor-particle.css";
 
 /* ============================================================
-   BASE LAYER — Reset & Global Defaults
+   BASE LAYER — Global Typography & Reset
 ============================================================ */
 @layer base {
   :root {
@@ -23,49 +25,63 @@
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
     @apply overflow-x-hidden;
     background-color: var(--color-bg);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Headings use display typeface */
+  /* ── Headings: Clash Display, tight line-height ── */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.1;         /* Desktop: tight for impact */
+    letter-spacing: -0.02em;
+    color: var(--color-text);
   }
 
-  /* Code snippets use mono */
-  code, pre, kbd {
+  /* Mobile: tighten further for small screens */
+  @media (max-width: 640px) {
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 1.0;
+    }
+  }
+
+  /* Code / mono elements */
+  code, pre, kbd, samp {
     font-family: var(--font-mono);
+    font-size: 0.9em;
   }
 
-  /* Focus ring in brand color */
+  /* Focus ring in brand lime */
   :focus-visible {
     outline: 2px solid var(--color-lime);
     outline-offset: 3px;
+    border-radius: 2px;
   }
 
-  /* Native scrollbar styled to match dark theme */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--color-bg);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-surface-2);
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-muted);
-  }
+  /* Brand-styled scrollbar */
+  ::-webkit-scrollbar        { width: 6px; }
+  ::-webkit-scrollbar-track  { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb  { background: var(--color-surface-2); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
 
-  /* Selection highlight */
+  /* Text selection highlight */
   ::selection {
     background-color: color-mix(in srgb, var(--color-lime) 30%, transparent);
     color: var(--color-text);
+  }
+
+  /* Smooth anchor scrolling (overridden by Lenis on desktop) */
+  html {
+    scroll-behavior: smooth;
   }
 }
