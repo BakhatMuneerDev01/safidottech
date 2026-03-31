@@ -1,12 +1,71 @@
+/* ============================================================
+   ROOT CSS ENTRY — SAFI DOT TECH
+   Import order matters:
+   1. Tailwind engine
+   2. Theme tokens (@theme block must precede utilities)
+   3. Keyframe animations
+   4. Cursor particle effects
+============================================================ */
 @import "tailwindcss";
+@import "./styles/theme.css";
+@import "./styles/keyframes.css";
+@import "./styles/cursor-particle.css";
 
-@theme {
-  --breakpoint-mobile: 640px;
-  --breakpoint-tablet: 1024px;
-}
-
+/* ============================================================
+   BASE LAYER — Reset & Global Defaults
+============================================================ */
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
-    @apply antialiased overflow-x-hidden;
+    @apply overflow-x-hidden;
+    background-color: var(--color-bg);
+  }
+
+  /* Headings use display typeface */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  /* Code snippets use mono */
+  code, pre, kbd {
+    font-family: var(--font-mono);
+  }
+
+  /* Focus ring in brand color */
+  :focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 3px;
+  }
+
+  /* Native scrollbar styled to match dark theme */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-2);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted);
+  }
+
+  /* Selection highlight */
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-lime) 30%, transparent);
+    color: var(--color-text);
   }
 }

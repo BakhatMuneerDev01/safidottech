@@ -1,1 +1,48 @@
-/* P1-02: Design Tokens */
+@theme {
+  /* ============================================================
+     CORE BACKGROUNDS — 4-Layer Depth System
+     Electric Forest Pro — Dark Palette
+  ============================================================ */
+  --color-bg:        #060A06;   /* Page root  */
+  --color-surface:   #0E130E;   /* Cards, panels */
+  --color-surface-2: #161C16;   /* Elevated modals, drawers */
+  --color-surface-3: #0A0F0A;   /* Lit Panel base */
+
+  /* ============================================================
+     ACCENT COLORS
+  ============================================================ */
+  --color-lime:      #AAFF00;   /* Primary CTA, highlights */
+  --color-lime-dim:  #88CC00;   /* Hover state, dimmed lime */
+  --color-teal:      #00FFB2;   /* Secondary accent */
+  --color-whatsapp:  #25D366;   /* WhatsApp button */
+
+  /* ============================================================
+     FUNCTIONAL COLORS
+  ============================================================ */
+  --color-text:      #F0FFF0;   /* Primary text */
+  --color-muted:     #6B7F6B;   /* Secondary / placeholder text */
+  --color-success:   #22C55E;   /* Success states */
+  --color-error:     #EF4444;   /* Error states */
+
+  /* ============================================================
+     TYPOGRAPHY — Self-hosted WOFF2 (loaded in P1-03)
+  ============================================================ */
+  --font-display: "Clash Display", sans-serif;
+  --font-body:    "Satoshi", sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  /* ============================================================
+     BREAKPOINTS
+     mobile: 640px  — Stack layouts
+     tablet: 1024px — Hamburger activation trigger
+  ============================================================ */
+  --breakpoint-mobile: 640px;
+  --breakpoint-tablet: 1024px;
+
+  /* ============================================================
+     SPACING SCALE
+  ============================================================ */
+  --section-pad-y: 120px;  /* Vertical breathing room in sections */
+  --section-pad-x: 5vw;    /* Fluid horizontal gutters */
+  --card-pad:      32px;   /* Internal card padding */
+}
