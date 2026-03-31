@@ -133,4 +133,30 @@
   .nav-link:hover::after {
     transform: scaleX(1);
   }
+
+  /* ── Mobile Nav Link Active Slide (P2-03) ── */
+  .mobile-nav-link {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .mobile-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-lime);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  /* Active state or hover wipe */
+  .mobile-nav-link:hover::after,
+  .mobile-nav-link.active::after {
+    transform: scaleX(1);
+  }
 }

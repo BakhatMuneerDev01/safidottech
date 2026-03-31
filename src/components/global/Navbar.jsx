@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../ui/Icon.jsx'
+import MobileNav from './MobileNav.jsx'
 
 /**
  * ChatPill Sub-component
@@ -36,6 +37,7 @@ function ChatPill() {
  */
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
 
   // Dynamic Scroll: increase border opacity past 50px
   useEffect(() => {
@@ -92,13 +94,15 @@ export function Navbar() {
             type="button"
             className="flex items-center justify-center min-w-[44px] min-h-[44px] rounded hover:bg-[rgba(255,255,255,0.05)] transition-colors text-[var(--color-text)]"
             aria-label="Open Navigation Menu"
-            onClick={() => console.log('P2-03 overlay trigger')}
+            onClick={() => setIsMobileNavOpen(true)}
           >
             <Icon name="hamburger" size={28} />
           </button>
         </div>
 
       </div>
+
+      <MobileNav isOpen={isMobileNavOpen} onClose={() => setIsMobileNavOpen(false)} />
     </header>
   )
 }
