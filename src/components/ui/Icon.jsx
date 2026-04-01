@@ -93,8 +93,6 @@ const Icon = memo(function Icon({
         width={size}
         height={size}
         color={color}
-        fill={color === 'currentColor' ? 'none' : undefined}
-        stroke={color}
         aria-label={title}
         aria-hidden={!title}
         focusable="false"
@@ -106,4 +104,6 @@ const Icon = memo(function Icon({
   )
 })
 
+
 export default Icon
+// Refresh glob map: 2026-04-01-1409

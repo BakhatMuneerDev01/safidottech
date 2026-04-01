@@ -238,7 +238,7 @@ export function Home() {
                { icon: "globe", title: "Web Development", desc: "Custom CMS, React, and Vue stacks engineered for absolute performance." },
                { icon: "shopping-cart", title: "Shopify Commerce", desc: "High-converting headless setups tailored for D2C scaling." },
                { icon: "search", title: "SEO Marketing", desc: "Data-driven organic strategies designed to capture Page 1 real estate." },
-               { icon: "lightning", title: "Speed Optimization", desc: "Lighthouse 95+ guarantees. We rewrite bottlenecks directly." },
+               { icon: "speed", title: "Speed Optimization", desc: "Lighthouse 95+ guarantees. We rewrite bottlenecks directly." },
                { icon: "server", title: "MERN Applications", desc: "Robust backend systems and custom dashboards built to spec." },
                { icon: "smartphone", title: "PWA Architecture", desc: "App-like mobile experiences served natively via the browser." }
             ].map((s, i) => (
@@ -288,16 +288,19 @@ export function Home() {
             </div>
 
             {[
-              { num: '01', title: 'Tell Us Your Vision', desc: 'We start with a deep dive into your goals, technical requirements, and target metrics.' },
-              { num: '02', title: 'We Design & Build', desc: 'Our engineers construct your platform mapping exact specifications to Electric Forest architecture.' },
-              { num: '03', title: 'SEO-Optimized Launch', desc: 'Zero deployment drop. We migrate and launch strictly protecting search console indexes.' },
-              { num: '04', title: 'Ongoing Growth Support', desc: 'Retainer-backed assurance. We scale the infrastructure precisely as your volume demands.' }
+              { num: '01', icon: 'mail', title: 'Tell Us Your Vision', desc: 'We start with a deep dive into your goals, technical requirements, and target metrics.' },
+              { num: '02', icon: 'code', title: 'We Design & Build', desc: 'Our engineers construct your platform mapping exact specifications to Electric Forest architecture.' },
+              { num: '03', icon: 'rocket', title: 'SEO-Optimized Launch', desc: 'Zero deployment drop. We migrate and launch strictly protecting search console indexes.' },
+              { num: '04', icon: 'chart', title: 'Ongoing Growth Support', desc: 'Retainer-backed assurance. We scale the infrastructure precisely as your volume demands.' }
             ].map((step, i) => (
               <div key={i} className={`relative flex flex-col lg:w-1/2 ${i % 2 === 0 ? 'lg:pr-16 lg:-translate-x-full lg:text-right lg:self-start' : 'lg:pl-16 lg:self-end'}`}>
                  <div className="absolute -top-10 -left-6 lg:left-auto lg:-top-16 text-[120px] font-bold text-[#AAFF00] opacity-5 pointer-events-none select-none z-0" style={{ fontFamily: 'var(--font-display)' }}>
                     {step.num}
                  </div>
                  <div className="relative z-10">
+                   <div className={`w-10 h-10 rounded-full bg-[rgba(170,255,0,0.05)] border border-[rgba(170,255,0,0.1)] flex items-center justify-center mb-6 text-[#AAFF00] ${i % 2 === 0 ? 'lg:ml-auto' : ''}`}>
+                      <Icon name={step.icon} size={20} />
+                   </div>
                    <h3 className="text-2xl font-bold text-[#F0FFF0] mb-3" style={{ fontFamily: 'var(--font-display)' }}>{step.title}</h3>
                    <p className="text-[var(--color-muted)] leading-relaxed">{step.desc}</p>
                  </div>

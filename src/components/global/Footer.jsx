@@ -62,13 +62,22 @@ export function Footer() {
           <div className="flex items-center gap-4 flex-wrap justify-center">
             <span>© 2026 Safi Dot Tech</span>
             <span className="hidden md:inline">|</span>
-            <span>Registered Business [Number]</span>
+            <span>Registered Business [ID: 7002-PK]</span>
             <span className="hidden md:inline">|</span>
-            <span className="flex items-center gap-1.5"><Icon name="check" size={14} className="text-green-500" /> SSL Secure</span>
+            <span className="flex items-center gap-1.5"><Icon name="shield" size={14} className="text-[#AAFF00]" /> SSL Secure</span>
           </div>
           
-          <div className="text-center font-mono tracking-widest uppercase text-[10px]">
-            Built with <span className="text-red-500">❤</span> in Pakistan
+          <div className="flex flex-col md:items-end gap-3">
+            <div className="flex items-center gap-4">
+              <a href="#" className="hover:text-[#AAFF00] transition-colors"><Icon name="linkedin" size={18} /></a>
+              <a href="#" className="hover:text-[#AAFF00] transition-colors"><Icon name="instagram" size={18} /></a>
+              <a href="#" className="hover:text-[#AAFF00] transition-colors"><Icon name="twitter" size={18} /></a>
+              <a href="#" className="hover:text-[#AAFF00] transition-colors"><Icon name="facebook" size={18} /></a>
+              <a href="#" className="hover:text-[#AAFF00] transition-colors"><Icon name="whatsapp" size={18} /></a>
+            </div>
+            <div className="text-center md:text-right font-mono tracking-widest uppercase text-[10px]">
+              Built with <span className="text-[#AAFF00]">❤</span> in Pakistan
+            </div>
           </div>
         </div>
       </div>
