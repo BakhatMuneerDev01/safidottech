@@ -52,7 +52,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-[100] glass-nav ${isScrolled ? 'is-scrolled' : ''}`}
+      className={`sticky top-0 left-0 w-full z-[100] glass-nav ${isScrolled ? 'is-scrolled' : ''}`}
     >
       <div
         className="w-full flex items-center justify-between px-[var(--section-pad-x)] transition-all duration-300

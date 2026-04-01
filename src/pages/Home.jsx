@@ -12,13 +12,19 @@ import LitPanel from '../components/ui/LitPanel.jsx'
 import GalleryFrame from '../components/ui/GalleryFrame.jsx'
 import SectionLabel from '../components/ui/SectionLabel.jsx'
 import { useNumberScramble } from '../hooks/useNumberScramble.js'
+import AnnouncementBar from '../components/global/AnnouncementBar.jsx'
+import Navbar from '../components/global/Navbar.jsx'
+import Footer from '../components/global/Footer.jsx'
+import PricingTeaser from '../components/sections/PricingTeaser.jsx'
+import LeadCapture from '../components/sections/LeadCapture.jsx'
+import FadeEdge from '../components/ui/FadeEdge.jsx'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /**
- * Homepage (P3-01 & P3-02)
+ * Homepage (P3-01, P3-02, P3-03)
  * ─────────────────────────────────────────────────────────────
- * Complete assembly of the homepage modules.
+ * Complete assembly of the homepage modules with definitive 11-section sequence.
  */
 export function Home() {
   const headlineRef = useRef(null)
@@ -43,7 +49,6 @@ export function Home() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) return
 
-    // === P3-01 ====================================================
     // Headline Assembler
     const words = headlineRef.current?.querySelectorAll('.word-assemble')
     const targetWord = document.getElementById('target-business')
@@ -80,8 +85,7 @@ export function Home() {
       }
     })
 
-    // === P3-02 ====================================================
-    // Services Grid Entrance: Staggered 100ms, blur 4px -> 0, y: 40 -> 0
+    // Services Grid Entrance
     const servicesObserver = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         gsap.fromTo(servicesCardsRef.current, 
@@ -136,10 +140,14 @@ export function Home() {
   return (
     <div className="w-full relative">
       
-      {/* ========================================================= 
-          1. HERO SECTION (VOID MOOD)
-          ========================================================= */}
-      <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center pt-[100px] overflow-hidden bg-[#060A06]">
+      {/* 1. ANNOUNCEMENT BAR */}
+      <AnnouncementBar />
+
+      {/* 2. NAVBAR */}
+      <Navbar />
+
+      {/* 3. HERO SECTION (VOID MOOD) */}
+      <section className="relative w-full min-h-[calc(100dvh-44px)] flex flex-col items-center justify-center pt-[100px] overflow-hidden bg-[#060A06]">
         <ConstellationField className="z-0 opacity-40 mix-blend-screen pointer-events-none" />
         <div className="absolute top-[80%] left-[30%] w-[500px] h-[500px] rounded-full bg-[rgba(85,102,0,0.14)] blur-[100px] animate-glow-breathe pointer-events-none" />
         <div className="absolute top-[15%] left-[85%] w-[400px] h-[400px] rounded-full bg-[rgba(0,255,178,0.06)] blur-[120px] animate-glow-breathe pointer-events-none" style={{ animationDelay: '2s' }} />
@@ -172,9 +180,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* ========================================================= 
-          2. SERVICE TICKER STRIP (INVERSE MOOD)
-          ========================================================= */}
+      {/* 4. SERVICE TICKER STRIP */}
       <section className="relative w-full bg-[#AAFF00] overflow-hidden flex items-center h-[52px]">
         <div className="flex w-[200%] animate-ticker select-none">
           <div className="w-1/2 flex items-center justify-around whitespace-nowrap px-4 font-mono font-bold tracking-widest text-xs uppercase text-[#060A06]">
@@ -196,9 +202,7 @@ export function Home() {
 
       <SectionDivider fillColor="#0E130E" />
 
-      {/* ========================================================= 
-          3. PROBLEM-SOLUTION GRID (SURFACE MOOD)
-          ========================================================= */}
+      {/* 5. PROBLEM-SOLUTION GRID */}
       <section className="relative w-full py-24 bg-[#0E130E]">
         <div className="max-w-7xl mx-auto px-[var(--section-pad-x)] flex flex-col items-center">
           <div className="text-center mb-16">
@@ -223,16 +227,13 @@ export function Home() {
           </div>
         </div>
       </section>
+      
+      <FadeEdge fromColor="#0E130E" toColor="#161C16" />
 
-      <SectionDivider fillColor="#161C16" />
-
-      {/* ========================================================= 
-          4. SERVICES GRID (ELEVATED MOOD) P3-02
-          ========================================================= */}
+      {/* 6. SERVICES OVERVIEW */}
       <section className="section-elevated w-full py-24 bg-[#161C16]">
         <div className="relative z-10 max-w-7xl mx-auto px-[var(--section-pad-x)] flex flex-col items-center">
           <SectionLabel text="◉ WHAT WE BUILD" className="mb-12" />
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
             {[
                { icon: "globe", title: "Web Development", desc: "Custom CMS, React, and Vue stacks engineered for absolute performance." },
@@ -250,23 +251,17 @@ export function Home() {
         </div>
       </section>
 
-      <SectionDivider fillColor="#060A06" flip={true} />
+      <FadeEdge fromColor="#161C16" toColor="#060A06" />
 
-      {/* ========================================================= 
-          5. HOW WE WORK (ATMOSPHERE MOOD) P3-02
-          ========================================================= */}
+      {/* 7. HOW WE WORK */}
       <section className="relative w-full py-32 bg-[#060A06] overflow-hidden">
         <TopographicLines className="z-0 opacity-30" />
         <ConstellationField className="z-0 opacity-20 pointer-events-none" />
-        
-        {/* Centered Olive Glow Ellipse */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[40%] rounded-[50%] bg-[rgba(85,102,0,0.12)] blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-[var(--section-pad-x)] flex flex-col items-start lg:items-center">
           <SectionLabel text="◉ THE PROCESS" className="mb-20 self-center" />
-
           <div className="relative w-full flex flex-col gap-24 lg:gap-32 pl-8 lg:pl-0" ref={processTrackRef}>
-            
             <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[2px]">
                <svg className="w-full h-full" preserveAspectRatio="none">
                   <defs>
@@ -275,18 +270,10 @@ export function Home() {
                     </mask>
                   </defs>
                   <line x1="1" y1="0" x2="1" y2="100%" stroke="rgba(170,255,0,0.1)" strokeWidth="2" strokeDasharray="6 6" />
-                  <line 
-                    x1="1" y1="0" x2="1" y2="100%" 
-                    stroke="#AAFF00" 
-                    strokeWidth="2" 
-                    strokeDasharray="6 6"
-                    mask="url(#processMask)"
-                  />
+                  <line x1="1" y1="0" x2="1" y2="100%" stroke="#AAFF00" strokeWidth="2" strokeDasharray="6 6" mask="url(#processMask)" />
                </svg>
-               {/* Traveling Dot (Refined r:4px) */}
                <div ref={processDotRef} className="absolute -left-[3px] -top-2 w-[8px] h-[8px] rounded-full bg-[#AAFF00] shadow-[0_0_15px_rgba(170,255,0,0.8)]" />
             </div>
-
             {[
               { num: '01', icon: 'mail', title: 'Tell Us Your Vision', desc: 'We start with a deep dive into your goals, technical requirements, and target metrics.' },
               { num: '02', icon: 'code', title: 'We Design & Build', desc: 'Our engineers construct your platform mapping exact specifications to Electric Forest architecture.' },
@@ -294,9 +281,7 @@ export function Home() {
               { num: '04', icon: 'chart', title: 'Ongoing Growth Support', desc: 'Retainer-backed assurance. We scale the infrastructure precisely as your volume demands.' }
             ].map((step, i) => (
               <div key={i} className={`relative flex flex-col lg:w-1/2 ${i % 2 === 0 ? 'lg:pr-16 lg:-translate-x-full lg:text-right lg:self-start' : 'lg:pl-16 lg:self-end'}`}>
-                 <div className="absolute -top-10 -left-6 lg:left-auto lg:-top-16 text-[120px] font-bold text-[#AAFF00] opacity-5 pointer-events-none select-none z-0" style={{ fontFamily: 'var(--font-display)' }}>
-                    {step.num}
-                 </div>
+                 <div className="absolute -top-10 -left-6 lg:left-auto lg:-top-16 text-[120px] font-bold text-[#AAFF00] opacity-5 pointer-events-none select-none z-0" style={{ fontFamily: 'var(--font-display)' }}>{step.num}</div>
                  <div className="relative z-10">
                    <div className={`w-10 h-10 rounded-full bg-[rgba(170,255,0,0.05)] border border-[rgba(170,255,0,0.1)] flex items-center justify-center mb-6 text-[#AAFF00] ${i % 2 === 0 ? 'lg:ml-auto' : ''}`}>
                       <Icon name={step.icon} size={20} />
@@ -304,65 +289,32 @@ export function Home() {
                    <h3 className="text-2xl font-bold text-[#F0FFF0] mb-3" style={{ fontFamily: 'var(--font-display)' }}>{step.title}</h3>
                    <p className="text-[var(--color-muted)] leading-relaxed">{step.desc}</p>
                  </div>
-                 {i !== 3 && (
-                   <div className="lg:hidden absolute left-0 top-16 bottom-[-6rem] w-[2px] border-l-2 border-dashed border-[rgba(170,255,0,0.2)] -translate-x-[26px]" />
-                 )}
+                 {i !== 3 && <div className="lg:hidden absolute left-0 top-16 bottom-[-6rem] w-[2px] border-l-2 border-dashed border-[rgba(170,255,0,0.2)] -translate-x-[26px]" />}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <SectionDivider fillColor="#0E130E" />
+      <FadeEdge fromColor="#060A06" toColor="#0E130E" />
 
-      {/* ========================================================= 
-          6. PORTFOLIO PREVIEW (SURFACE MOOD) P3-02
-          ========================================================= */}
+      {/* 8. PORTFOLIO PREVIEW */}
       <section className="relative w-full py-24 bg-[#0E130E]">
         <div className="max-w-7xl mx-auto px-[var(--section-pad-x)] flex flex-col items-center">
           <SectionLabel text="◉ RECENT WORK" className="mb-12" />
-          
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full">
-            <GalleryFrame 
-              imageSrc="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200" 
-              title="Aura Restaurant" 
-              subtitle="Restaurant MERN App" 
-              stack={['globe', 'server']} 
-            />
-            <GalleryFrame 
-              imageSrc="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200" 
-              title="Velvet Fashion" 
-              subtitle="Fashion Shopify Store" 
-              stack={['shopping-cart', 'smartphone']} 
-            />
-            <GalleryFrame 
-              imageSrc="https://images.unsplash.com/photo-1454165833767-027ffea9e7a7?q=80&w=1200" 
-              title="Nexus Legal" 
-              subtitle="Professional Services WordPress" 
-              stack={['search', 'globe']} 
-            />
-          </div>
-
-          <div className="mt-20 w-full flex flex-col items-center border-t border-[rgba(255,255,255,0.05)] pt-12">
-            <h5 className="text-[10px] uppercase font-mono tracking-widest text-[#F0FFF0] opacity-40 mb-8">Certification Bar</h5>
-            <div className="flex items-center justify-center gap-16 opacity-30 grayscale filter invert brightness-200 contrast-50 flex-wrap">
-              <span className="font-bold tracking-[0.2em] text-sm uppercase">Google Analytics</span>
-              <span className="font-bold tracking-[0.2em] text-sm uppercase">HubSpot</span>
-              <span className="font-bold tracking-[0.2em] text-sm uppercase">Shopify Partner</span>
-            </div>
+            <GalleryFrame imageSrc="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200" title="Aura Restaurant" subtitle="Restaurant MERN App" stack={['globe', 'server']} />
+            <GalleryFrame imageSrc="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200" title="Velvet Fashion" subtitle="Fashion Shopify Store" stack={['shopping-cart', 'smartphone']} />
+            <GalleryFrame imageSrc="https://images.unsplash.com/photo-1454165833767-027ffea9e7a7?q=80&w=1200" title="Nexus Legal" subtitle="Professional Services WordPress" stack={['search', 'globe']} />
           </div>
         </div>
       </section>
 
-      <SectionDivider fillColor="#060A06" flip={true} />
+      <FadeEdge fromColor="#0E130E" toColor="#060A06" />
 
-      {/* ========================================================= 
-          7. STATS / TRUST BAR (VOID MOOD) P3-02
-          ========================================================= */}
+      {/* 9. STATS BAR */}
       <section className="relative w-full py-40 bg-[#060A06] overflow-hidden" ref={statsRef}>
         <ConstellationField className="absolute inset-0 z-0 opacity-20 pointer-events-none" />
-        
-        {/* P3-02 Specific Glows */}
         <div className="absolute top-1/2 left-[15%] -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[rgba(170,255,0,0.05)] blur-[100px] pointer-events-none" />
         <div className="absolute top-1/2 left-[85%] -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[rgba(170,255,0,0.05)] blur-[100px] pointer-events-none" />
 
@@ -376,11 +328,7 @@ export function Home() {
                 { n: stat5, suffix: '', label: 'Digital Services' }
               ].map((s, i) => (
                 <div key={i} className="relative flex flex-col items-center justify-center pt-8 md:pt-0 pb-8 md:pb-0 px-4 text-center">
-                   {/* Vertical Lime Dividers (Desktop) */}
-                   {i !== 0 && (
-                     <div className="hidden md:block absolute left-0 top-1/4 bottom-1/4 w-[1px] bg-[rgba(170,255,0,0.2)]" />
-                   )}
-                   
+                   {i !== 0 && <div className="hidden md:block absolute left-0 top-1/4 bottom-1/4 w-[1px] bg-[rgba(170,255,0,0.2)]" />}
                    <div className="flex items-baseline text-[#AAFF00] mb-2" style={{ fontFamily: 'var(--font-display)' }}>
                      <span className="text-[54px] md:text-[64px] font-bold leading-none">{s.n}</span>
                      <span className="text-2xl font-bold ml-1">{s.suffix}</span>
@@ -391,6 +339,21 @@ export function Home() {
            </div>
         </div>
       </section>
+
+      <FadeEdge fromColor="#060A06" toColor="#161C16" />
+
+      {/* 10. PRICING TEASER */}
+      <PricingTeaser />
+
+      <FadeEdge fromColor="#161C16" toColor="#060A06" />
+
+      {/* 11. LEAD CAPTURE */}
+      <LeadCapture />
+
+      <FadeEdge fromColor="#060A06" toColor="#0E130E" />
+
+      {/* 12. FOOTER */}
+      <Footer />
 
     </div>
   )
