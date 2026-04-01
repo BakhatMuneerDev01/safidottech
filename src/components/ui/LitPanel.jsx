@@ -65,7 +65,7 @@ export function LitPanel({ title, description, iconName, className = '' }) {
     >
       {/* 1. Ambient Shimmer Overlay */}
       <div 
-        className={`absolute inset-0 pointer-events-none ${isHovered ? 'animate-card-shimmer-fast' : 'animate-card-shimmer'} mix-blend-screen opacity-10`}
+        className="absolute inset-0 pointer-events-none animate-card-shimmer mix-blend-screen opacity-10"
         style={{
           background: 'linear-gradient(135deg, transparent 20%, rgba(170,255,0,1) 50%, transparent 80%)',
           backgroundSize: '200% 200%'

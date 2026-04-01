@@ -20,14 +20,19 @@ export function GalleryFrame({ imageSrc, title, subtitle, stack = [], linkText =
       {/* 1. Cinematic Zoom Background */}
       <motion.div
          className="absolute inset-0 w-full h-full bg-cover bg-center origin-center"
-         style={{ backgroundImage: `url(${imageSrc})` }}
+         style={{ backgroundImage: `url(${imageSrc})`, willChange: 'transform' }}
          initial={{ scale: 1.0 }}
          animate={{ scale: isHovered ? 1.08 : 1.0 }}
          transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
       />
 
-      {/* 2. Optical Gradient Overlay mapping shadow for text legibility */}
-      <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[#060A06] to-transparent pointer-events-none" />
+      {/* 2. Optical Gradient Overlay: Rises on hover */}
+      <motion.div 
+        className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#060A06] to-transparent pointer-events-none" 
+        initial={{ height: '40%', opacity: 0.8 }}
+        animate={{ height: isHovered ? '70%' : '40%', opacity: isHovered ? 1 : 0.8 }}
+        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+      />
 
       {/* 3. Tech Stack Stagger (Top Right) */}
       <div className="absolute top-4 right-4 flex gap-2">
